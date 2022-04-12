@@ -15,7 +15,6 @@ const Filter = ({ data }) => {
         )
     }
 
-    // const filteredCoins = coins.filter(coin => coin.name.toLowerCase().includes(search.toLowerCase()))
     const filterProduct1 = data.filter(item => item.product[0].name.toLowerCase().includes(filter.productName.toLowerCase()))
     const filterProduct2 = filterProduct1.filter(item => item.date.toLowerCase().includes(filter.date.toLowerCase()))
     const filterProduct3 = filterProduct2.filter(item => item.amount.toString().toLowerCase().includes(filter.amount.toString().toLowerCase()))
