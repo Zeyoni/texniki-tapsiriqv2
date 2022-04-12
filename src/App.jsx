@@ -4,24 +4,25 @@ import Chart from './components/Chart';
 import Filter from './components/Filter';
 import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
+import { PuffLoader } from 'react-spinners';
 
 function App() {
   const [datas, setDatas] = useState(undefined)
-  
-  
+
+
   useEffect(() => {
     fetch("https://assignment-6fdaf-default-rtdb.firebaseio.com/orders.json")
       .then(res => res.json())
       .then(data => setDatas(data))
       .catch(err => console.log("Xəta:", err))
-      
-      
-    }, [])
-    
-    const [mostSale, setMostSale] = useState({
-      product: '',
-      date: '',
-    })
+
+
+  }, [])
+
+  const [mostSale, setMostSale] = useState({
+    product: '',
+    date: '',
+  })
   useEffect(() => {
     if (datas) {
       const amounts = datas.map(({ amount }) => amount)
@@ -46,7 +47,9 @@ function App() {
   return (
     <>
       {
-        datas === undefined && <div className='vh-100 vw-100 d-flex justify-content-center align-items-center'>Loading</div>
+        datas === undefined && <div className='vh-100 vw-100 d-flex justify-content-center align-items-center'>
+          <PuffLoader color="#ffb326" size={150}/>
+        </div>
       }
 
       {
